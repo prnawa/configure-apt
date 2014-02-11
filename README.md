@@ -1,24 +1,15 @@
 configure-apt Cookbook
 ======================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook configure apt.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
-#### packages
-- `toaster` - configure-apt needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
-#### configure-apt::default
+#### configure-apt::apt-mirror-baseurl
 <table>
   <tr>
     <th>Key</th>
@@ -27,10 +18,10 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['configure-apt']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>["configure-apt"]["apt-mirror-baseurl"]</tt></td>
+    <td>String</td>
+    <td>Ubuntu archive location</td>
+    <td><tt>"http://gb.archive.ubuntu.com/ubuntu/"</tt></td>
   </tr>
 </table>
 
@@ -44,25 +35,20 @@ Just include `configure-apt` in your node's `run_list`:
 
 ```json
 {
-  "name":"my_node",
-  "run_list": [
-    "recipe[configure-apt]"
-  ]
+    "name": "configure-apt",
+    "json_class": "Chef::Role",
+    "description": "configure-apt role",
+    "chef_type": "role",
+    "default_attributes": {   
+		"configure-apt" : {
+			"apt-mirror-baseurl" : "http://download.nus.edu.sg/mirror/ubuntu/"
+		}
+    },
+    "override_attributes": {},
+    "run_list": ["recipe[configure-apt]"]
 }
 ```
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
 License and Authors
 -------------------
-Authors: TODO: List authors
+MIT
