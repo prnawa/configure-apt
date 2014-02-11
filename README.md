@@ -27,11 +27,9 @@ Attributes
 
 Usage
 -----
-#### configure-apt::default
-TODO: Write usage instructions for each cookbook.
+#### configure-apt::apt-mirror-baseurl
 
-e.g.
-Just include `configure-apt` in your node's `run_list`:
+include `configure-apt` in your node's `run_list`:
 
 ```json
 {
