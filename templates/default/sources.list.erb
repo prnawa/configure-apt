@@ -1,0 +1,22 @@
+# This file is managed by chef
+
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise main restricted
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise main restricted
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates main restricted
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates main restricted
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise universe
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise universe
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates universe
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates universe
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise multiverse
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise multiverse
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates multiverse
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-updates multiverse
+deb <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-backports main restricted universe multiverse
+deb-src <%= node["configure-apt"]["apt-mirror-baseurl"] %> precise-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu precise-security main restricted
+deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
+deb http://security.ubuntu.com/ubuntu precise-security universe
+deb-src http://security.ubuntu.com/ubuntu precise-security universe
+deb http://security.ubuntu.com/ubuntu precise-security multiverse
+deb-src http://security.ubuntu.com/ubuntu precise-security multiverse
