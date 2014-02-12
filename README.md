@@ -6,6 +6,8 @@ Attributes
 ----------
 
 #### configure-apt::apt-mirror-baseurl
+#### configure-apt::region
+
 <table>
   <tr>
     <th>Key</th>
@@ -29,9 +31,11 @@ Attributes
 
 Usage
 -----
-#### configure-apt::region
+This example uses vagrant to create a virtual box for you and the chef solo is used to provision that box with `configure-apt` cookbook. This is assumed that you have installed vagrant in your workstation
 
-include `configure-apt::regional` in your node's `run_list`:
+    * First create folder in your working directory and name it as `cookbookdemo` then change working directory to that directory.
+    * Create bellow files inside `cookbookdemo` folder.
+    * Finally run `vagrant up` command in a shell; 
 
 #### role './roles/configure-apt.json'
 
@@ -51,7 +55,7 @@ include `configure-apt::regional` in your node's `run_list`:
 }
 ```
 
-#### databag './databags/configure-apt/configure-apt.json'
+#### databag './databags/configure-apt/apt-sources.json'
 
 ```json
 {
@@ -101,7 +105,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :chef_solo do |chef|
 		chef.roles_path = "roles"
-		chef.data_bags_path = "data_bags"
+		chef.data_bags_path = "databags"
 		chef.cookbooks_path = "cookbooks"
                 
 		chef.add_role "configure-apt"
