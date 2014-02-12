@@ -1,10 +1,6 @@
 configure-apt Cookbook
 ======================
-This cookbook configure apt.
-
-Requirements
-------------
-
+This cookbook configures apt.
 
 Attributes
 ----------
@@ -23,13 +19,21 @@ Attributes
     <td>Ubuntu archive location</td>
     <td><tt>"http://gb.archive.ubuntu.com/ubuntu/"</tt></td>
   </tr>
+  <tr>
+    <td><tt>["configure-apt"]["region"]</tt></td>
+    <td>String</td>
+    <td>Region</td>
+    <td><tt>"europe"</tt></td>
+  </tr>
 </table>
 
 Usage
 -----
-#### configure-apt::apt-mirror-baseurl
+#### configure-apt::region
 
-include `configure-apt` in your node's `run_list`:
+include `configure-apt::regional` in your node's `run_list`:
+
+#### role './roles/configure-apt.json'
 
 ```json
 {
@@ -39,13 +43,30 @@ include `configure-apt` in your node's `run_list`:
     "chef_type": "role",
     "default_attributes": {   
 		"configure-apt" : {
-			"apt-mirror-baseurl" : "http://download.nus.edu.sg/mirror/ubuntu/"
+			"region" : "asia"
 		}
     },
     "override_attributes": {},
-    "run_list": ["recipe[configure-apt]"]
+    "run_list": ["recipe[configure-apt::regional]"]
 }
 ```
+
+#### databag './databags/configure-apt/configure-apt.json'
+
+```json
+{
+    "id": "apt-sources",
+    "region": {
+        "asia": {
+            "base_url": "http://download.nus.edu.sg/mirror/ubuntu/"
+        },
+        "europe": {
+            "base_url": "http://gb.archive.ubuntu.com/ubuntu/"
+        }
+    }
+}
+```
+
 
 License and Authors
 -------------------
